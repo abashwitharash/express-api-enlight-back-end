@@ -11,6 +11,8 @@ const logger = require('morgan');
 const authRouter = require('./controllers/auth');
 const testJwtRouter = require('./controllers/test-jwt');
 const usersRouter = require('./controllers/users');
+const enlightsRouter = require("./controllers/enlights.js");
+
 
 const PORT = (process.env.PORT || 3000);
 // Connect to MongoDB
@@ -29,6 +31,7 @@ app.use(logger('dev'));
 app.use('/auth', authRouter);
 app.use('/test-jwt', testJwtRouter);
 app.use('/users', usersRouter);
+app.use("/enlights", enlightsRouter);
 
 // Start the server and listen on port 3000
 app.listen(PORT, () => {
