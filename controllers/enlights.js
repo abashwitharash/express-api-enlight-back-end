@@ -11,7 +11,7 @@ router.post("/", verifyToken, async (req, res) => {
       const enlight = await Enlight.create(req.body);
       enlight._doc.author = req.user;
       res.status(201).json(enlight);
-    } catch (err) {
+    } catch (err) {                      
       res.status(500).json({ err: err.message });
     }
   });
