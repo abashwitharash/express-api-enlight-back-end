@@ -100,4 +100,24 @@ router.post("/", verifyToken, async (req, res) => {
   });
 
 
+  router.put("/:enlightId/comments/:commentId", verifyToken, async (req, res) => {
+    try {
+      const enlight = await Enlight.findById(req.params.enlightId);
+      const comment = enlight.comments.id(req.params.commentId);
+  
+      // ensures the current user is the author of the comment
+      if (comment.author.toString() !== req.user._id) {
+        return res
+          .status(403)
+          .json({ message: "You are not authorized to edit this comment" });
+      }
+  
+      comment.text = req.body.text;
+      await enlight.save();
+      res.status(200).json({ message: "Comment updated successfully" });
+    } catch (err) {
+      res.status(500).json({ err: err.message });
+    }
+  });
+
 module.exports = router;
