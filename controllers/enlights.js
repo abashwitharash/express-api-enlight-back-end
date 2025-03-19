@@ -11,7 +11,7 @@ router.post("/", verifyToken, async (req, res) => {
       const enlight = await Enlight.create(req.body);
       enlight._doc.author = req.user;
       res.status(201).json(enlight);
-    } catch (err) {
+    } catch (err) {                      
       res.status(500).json({ err: err.message });
     }
   });
@@ -33,7 +33,7 @@ router.post("/", verifyToken, async (req, res) => {
         'author',
         'comments.author',
       ]);
-      res.status(200).json(hoot);
+      res.status(200).json(enlight);
     } catch (err) {
       res.status(500).json({ err: err.message });
     }
