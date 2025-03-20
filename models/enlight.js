@@ -25,7 +25,7 @@ const enlightSchema = new mongoose.Schema(
       category: {
         type: String,
         required: true,
-        enum: ['Fitness', 'Sports', 'Travel', 'Relationship', 'Hobbies'],
+        enum: ['Fitness', 'Sports', 'Travel', 'Relationships', 'Hobbies', 'Career'],
       },
       author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
       comments: [commentSchema], 
