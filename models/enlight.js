@@ -2,37 +2,37 @@ const mongoose = require('mongoose');
 
 
 const commentSchema = new mongoose.Schema(
-    {
-      text: {
-        type: String,
-        required: true
-      },
-      author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  {
+    text: {
+      type: String,
+      required: true
     },
-    { timestamps: true }
-  );
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  },
+  { timestamps: true }
+);
 
 const enlightSchema = new mongoose.Schema(
-    {
-      title: {
-        type: String,
-        required: true,
-      },
-      text: {
-        type: String,
-        required: true,
-      },
-      category: {
-        type: String,
-        required: true,
-        enum: ['Fitness', 'Sports', 'Travel', 'Relationships', 'Hobbies', 'Career'],
-      },
-      author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-      comments: [commentSchema], 
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+      enum: ['Fitness', 'Sports', 'Travel', 'Relationships', 'Hobbies', 'Career'],
+    },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    comments: [commentSchema],
   },
-    { timestamps: true }
-  );
+  { timestamps: true }
+);
 
-  const Enlight = mongoose.model('Enlight', enlightSchema);
+const Enlight = mongoose.model('Enlight', enlightSchema);
 
-  module.exports = Enlight;
+module.exports = Enlight;
